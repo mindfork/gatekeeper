@@ -1,13 +1,15 @@
 package gatekeeper
 
-import "github.com/mindfork/mindfork"
+import (
+	"strconv"
+
+	"github.com/mindfork/mindfork"
+)
 
 type Gatekeeper struct {
 	mindfork.Agent
-	name string
 }
 
-func (gk *Gatekeeper) Init(port string) {
-	gk.Agent.Init(port)
-	gk.name = "Gatekeeper"
+func (gk *Gatekeeper) Name() string {
+	return "gatekeeper/" + strconv.Itoa(gk.Id())
 }
